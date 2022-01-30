@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayableClass {
-    warrior,
-    mage,
-    necromance
+    warrior=0,
+    mage=1,
+    necromancer=2
 }
 
 public class Player : MonoBehaviour
 {
-    private PlayableClass m_class = PlayableClass.warrior;
-    private string m_playerName;
+    public PlayableClass m_class = PlayableClass.warrior;
+    public string m_playerName;
 
     // Start is called before the first frame update
     void Start() {

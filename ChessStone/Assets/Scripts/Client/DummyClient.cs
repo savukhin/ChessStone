@@ -22,15 +22,19 @@ public class DummyClient : BaseClient
     public override async void SendStateRequest() {
         await Task.Yield();
 
-        GameState result = null;
+        StatePackage result = null;
         if (!m_wasFirstStateRequest) {
             m_wasFirstStateRequest = true;
-            result =  new GameState(
-                new GameState.PlayerState("Player"),
-                new GameState.PlayerState("Dummy")
-                );
 
-            Debug.Log("Dummy created players name1 = " + result.player1.name + " name2 = " + result.player2.name);
+            StatePackage.FigureState[] figures1 = {
+                new StatePackage.FigureState(0, 0, 0)};
+                
+            StatePackage.FigureState[] figures2 = {};
+
+            result =  new StatePackage(
+                new StatePackage.PlayerState("Player", PlayableClass.warrior, figures1),
+                new StatePackage.PlayerState("Dummy", PlayableClass.warrior, figures2)
+                );
         } else {
             result = GameManager.GetState();
         }

@@ -17,6 +17,10 @@ public class Cell : MonoBehaviour
 
     [SerializeField] private CellColor m_color = CellColor.white;
     [SerializeField] private Color m_choosenColor = Color.blue;
+
+    public int row=-1;
+    public int col=-1;
+
     private Material m_material;
     
     private void ResetColor() {
@@ -28,6 +32,7 @@ public class Cell : MonoBehaviour
     {
         m_material = GetComponent<Renderer>().material;
         ResetColor();
+
     }
 
     // Update is called once per frame

@@ -28,12 +28,11 @@ public class GameManager : MonoBehaviour
 
     #region Private variables
 
-    private Player m_player1 = null;
-    private Player m_player2 = null;
+    private Player m_player1 = new Player();
+    private Player m_player2 = new Player();
     private Player m_currentPlayer = null;
-    //private Field m_field;
     private BaseClient m_client = null;
-    private GameState m_gameState = new GameState();
+    private StatePackage m_gameState = new StatePackage();
 
     #endregion
 
@@ -62,11 +61,27 @@ public class GameManager : MonoBehaviour
 
     #region Client interaction
 
-    void ParseAction(GameAction action) {
+    void ParseAction(ActionPackage action) {
         
     }
 
-    void ParseState(GameState state) {
+    void UpdateFigures(StatePackage state) {
+        FieldManager.m_instance.ClearField();
+        var figures = state.player1.figures;
+        var field = FieldManager.m_instance;
+
+        for (int i = 0; i < figures.Length; i++) {
+            var figure = figures[i];
+
+            field.PlaceFigure(
+                FigureManager.figurePrefabs[figure.id],
+                figure.row,
+                figure.col
+                );
+        }
+    }
+
+    void ParseState(StatePackage state) {
         if (state == null || state == m_gameState)
             return;
         
@@ -74,10 +89,17 @@ public class GameManager : MonoBehaviour
         UIManager.ChangePlayerName(1, m_gameState.player1.name);
         UIManager.ChangePlayerName(2, m_gameState.player2.name);
 
+        m_player1.m_playerName = m_gameState.player1.name;
+        m_player2.m_playerName = m_gameState.player2.name;
+        m_player1.m_class = m_gameState.player1.m_class;
+        m_player2.m_class = m_gameState.player2.m_class;
+
+        UpdateFigures(state);
+
         return;
     }
 
-    public static GameState GetState() {
+    public static StatePackage GetState() {
         return m_instance.m_gameState;
     }
 
@@ -86,6 +108,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager GetInstance() {
         return m_instance;
+    }
+
+    public void StartTurn(Player player) {
+        m_currentPlayer = player;
     }
 
     public void EndTurn() {
@@ -103,7 +129,8 @@ public class GameManager : MonoBehaviour
         m_client.StartClient();
 
         m_client.SendStateRequest();
-        m_client.SendStateRequest();
+
+        StartTurn(m_player1);
     }
 
     // Update is called once per frame
