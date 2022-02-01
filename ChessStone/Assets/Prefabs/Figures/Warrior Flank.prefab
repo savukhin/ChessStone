@@ -10,6 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7226213060302102428}
   - component: {fileID: 5885633897364837733}
+  - component: {fileID: 7631309728312449818}
+  - component: {fileID: 3057539573961206270}
+  - component: {fileID: 1724410590387158701}
+  - component: {fileID: 4103567668856645966}
+  - component: {fileID: 4313785633148580655}
   m_Layer: 0
   m_Name: Warrior Flank
   m_TagString: Untagged
@@ -46,3 +51,81 @@ MonoBehaviour:
   m_id: 0
   m_class: 0
   m_type: 4
+  m_step: {fileID: 4313785633148580655}
+--- !u!114 &7631309728312449818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226213060302102429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff04dfc2f9106a342aeba0a0fa2ea2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 5
+  isEndless: 1
+  range: 1
+--- !u!114 &3057539573961206270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226213060302102429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff04dfc2f9106a342aeba0a0fa2ea2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 6
+  isEndless: 1
+  range: 1
+--- !u!114 &1724410590387158701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226213060302102429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff04dfc2f9106a342aeba0a0fa2ea2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 7
+  isEndless: 1
+  range: 1
+--- !u!114 &4103567668856645966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226213060302102429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff04dfc2f9106a342aeba0a0fa2ea2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 8
+  isEndless: 1
+  range: 1
+--- !u!114 &4313785633148580655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226213060302102429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3979d33825f1246af7a991b25f39d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_steps:
+  - {fileID: 7631309728312449818}
+  - {fileID: 3057539573961206270}
+  - {fileID: 1724410590387158701}
+  - {fileID: 4103567668856645966}

@@ -45,7 +45,7 @@ public class FieldManager : MonoBehaviour
 
         var position = cell.transform.position + Vector3.up * collider.bounds.size.y / 2;
 
-        var chip = Instantiate(
+        var chip = Instantiate( 
             chipPrefab,
             position,
             Quaternion.identity

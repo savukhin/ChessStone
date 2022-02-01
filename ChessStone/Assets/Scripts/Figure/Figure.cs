@@ -17,6 +17,7 @@ public class Figure : MonoBehaviour
     [SerializeField] private int m_id;
     [SerializeField] private PlayableClass m_class;
     [SerializeField] private FigureType m_type;
+    [SerializeField] private BaseStep m_step;
 
     public int GetId() { return m_id; }
     public FigureType GetFigureType() { return m_type; }

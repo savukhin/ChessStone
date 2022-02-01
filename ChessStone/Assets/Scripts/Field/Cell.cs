@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cell : MonoBehaviour
 {
+    [System.NonSerialized] UnityEvent<int, int> clickedEvent;
     public enum CellColor {
         white,
         black
@@ -17,6 +19,8 @@ public class Cell : MonoBehaviour
 
     [SerializeField] private CellColor m_color = CellColor.white;
     [SerializeField] private Color m_choosenColor = Color.blue;
+    [SerializeField] private Color m_moveColor = Color.green;
+    [SerializeField] private Color m_attackColor = Color.red;
 
     public int row=-1;
     public int col=-1;
