@@ -23,21 +23,18 @@ public class Chip : MonoBehaviour
         return m_cell;
     }
 
-    IEnumerator MoveAnimation(Vector2 displacement) {
+    IEnumerator MoveAnimation(Vector2 displacement, float maxHeight=1, float speed=10f) {
         // f(x) = -a * x (x - 2 sqrt(h));
         GameManager.m_instance.flags.isMoving = true;
 
-        var maxHeight = 1;
-
         float x = 0.0f;
         float l = displacement.magnitude;
-        float speedX = 4f;
         var startPosition = transform.position;
         var startPositionXoZ = new Vector2(transform.position.x, transform.position.z);
         var direction = displacement.normalized;
         float a = - 4 * maxHeight / (l * l);
 
-        for (; x < l; x += speedX * Time.deltaTime) {
+        for (; x < l; x += speed * Time.deltaTime) {
             Vector2 nextPositionXoZ = startPositionXoZ;
             nextPositionXoZ += direction * ((float)x);
             transform.position = new Vector3(
@@ -54,7 +51,8 @@ public class Chip : MonoBehaviour
     }
 
     public void MoveTo(Vector2 displacement) {
-        StartCoroutine("MoveAnimation", displacement);
+        //StartCoroutine("MoveAnimation", displacement);
+        StartCoroutine(MoveAnimation(displacement));
     }
 
     // Start is called before the first frame update
