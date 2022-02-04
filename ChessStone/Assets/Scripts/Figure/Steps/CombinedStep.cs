@@ -9,8 +9,13 @@ public class CombinedStep : BaseStep
 
     public override List<KeyValuePair<int, int>> GetMoves(KeyValuePair<int, int> from, KeyValuePair<int, int> shape)
     {
-        return m_steps
-            .Select(step => step.GetMoves(from, shape))
-            .OfType<KeyValuePair<int, int>>().ToList();
+        var result = new List<KeyValuePair<int, int>>();
+        foreach (var step in m_steps) {
+            var middle = step.GetMoves(from, shape);
+            foreach (var item in middle) {
+                result.Add(item);
+            }
+        }
+        return result;
     }
 }

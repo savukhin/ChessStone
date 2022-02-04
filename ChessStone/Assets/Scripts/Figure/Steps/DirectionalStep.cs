@@ -25,41 +25,41 @@ public class DirectionalStep : BaseStep
         switch (direction)
         {
             case StepDirection.MainDiagonalUpward:
-                return Enumerable.Range(1, Mathf.Min(shape.Key - from.Key, from.Value - 1))
+                return Enumerable.Range(1, Mathf.Min(shape.Key - from.Key - 1, from.Value))
                     .Select(item => new KeyValuePair<int, int>(from.Key + item, from.Value + item))
                     .OfType<KeyValuePair<int, int>>().ToList();
 
             case StepDirection.MainDiagonalDownward:
-                return Enumerable.Range(1, Mathf.Min(from.Key - 1, shape.Value - from.Value))
+                return Enumerable.Range(1, Mathf.Min(from.Key, shape.Value - from.Value - 1))
                     .Select(item => new KeyValuePair<int, int>(from.Key - item, from.Value - item))
                     .OfType<KeyValuePair<int, int>>().ToList();
             
             case StepDirection.SecondaryDiagonalUpward:
-                return Enumerable.Range(1, Mathf.Min(shape.Key - from.Key, shape.Value - from.Value))
+                return Enumerable.Range(1, Mathf.Min(shape.Key - from.Key - 1, shape.Value - from.Value - 1))
                     .Select(item => new KeyValuePair<int, int>(from.Key + item, from.Value + item))
                     .OfType<KeyValuePair<int, int>>().ToList();
 
             case StepDirection.SecondaryDiagonalDownward:
-                return Enumerable.Range(1, Mathf.Min(from.Key - 1, from.Value - 1))
+                return Enumerable.Range(1, Mathf.Min(from.Key, from.Value))
                     .Select(item => new KeyValuePair<int, int>(from.Key - item, from.Value - item))
                     .OfType<KeyValuePair<int, int>>().ToList();
 
             case StepDirection.Upward:
-                return Enumerable.Range(1, shape.Key - from.Key)
+                return Enumerable.Range(1, shape.Key - from.Key - 1)
                     .Select(item => new KeyValuePair<int, int>(from.Key + item, from.Value))
                     .OfType<KeyValuePair<int, int>>().ToList();
 
             case StepDirection.Downward:
-                return Enumerable.Range(1, from.Key - 1)
+                return Enumerable.Range(1, from.Key)
                     .Select(item => new KeyValuePair<int, int>(from.Key - item, from.Value))
                     .OfType<KeyValuePair<int, int>>().ToList();
 
             case StepDirection.Leftward:
-                return Enumerable.Range(1, shape.Value - from.Value)
+                return Enumerable.Range(1, shape.Value - from.Value - 1)
                     .Select(item => new KeyValuePair<int, int>(from.Key, from.Value + item))
                     .OfType<KeyValuePair<int, int>>().ToList();
             case StepDirection.Rightward:
-                return Enumerable.Range(1, from.Value - 1)
+                return Enumerable.Range(1, from.Value)
                     .Select(item => new KeyValuePair<int, int>(from.Key, from.Value - item))
                     .OfType<KeyValuePair<int, int>>().ToList();
             default:

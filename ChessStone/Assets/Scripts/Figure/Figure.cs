@@ -22,4 +22,5 @@ public class Figure : MonoBehaviour
     public int GetId() { return m_id; }
     public FigureType GetFigureType() { return m_type; }
     public PlayableClass GetFigureClass() { return m_class; }
+    public List< KeyValuePair<int, int> > GetMoves(KeyValuePair<int, int> from, KeyValuePair<int, int> shape) { return m_step.GetMoves(from, shape); }
 }

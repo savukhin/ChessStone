@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 {
     public PlayableClass m_class = PlayableClass.warrior;
     public string m_playerName;
+    public int maxMoveCount = 1;
+    public int currentMoveCount = 1;
 
     // Start is called before the first frame update
     void Start() {

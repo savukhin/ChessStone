@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
 {
     #region Internal constructions
 
-    class Flags {
-        bool m_isMoving = false;
-        bool m_isCasting = false;
-        bool m_isPlacing = false;
+    public class Flags {
+        public bool isMoving = false;
+        public bool isCasting = false;
+        public bool isPlacing = false;
     }
     private enum ClientType {
         Dummy,
@@ -33,10 +33,11 @@ public class GameManager : MonoBehaviour
     private Player m_currentPlayer = null;
     private BaseClient m_client = null;
     private StatePackage m_gameState = new StatePackage();
+    public Flags flags = new Flags();
 
     #endregion
 
-    private static GameManager m_instance = null;
+    public static GameManager m_instance = null;
 
     void Awake() {
         if (m_instance == null) {
@@ -116,6 +117,14 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn() {
 
+    }
+
+    public void PlayerMove() {
+        m_currentPlayer.currentMoveCount--;
+    }
+
+    public bool IsAbleToMove() {
+        return m_currentPlayer.currentMoveCount != 0;
     }
 
     #endregion
